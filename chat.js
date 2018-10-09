@@ -1,4 +1,4 @@
-socket = io.connect("https://messaging-hkmipotzbi.now.sh/");
+socket = io.connect("https://messaging-smimciwnjn.now.sh/");
 
 var message = document.getElementById("message")
 var btn = document.getElementById("send")
