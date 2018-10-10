@@ -10,7 +10,7 @@ btn.addEventListener("click", function() {
         name:senderName.value,
         message:message.value
     })
-    message.innerText = "";
+    message.value = "";
 })
 
 socket.on("chat",function(data) {
