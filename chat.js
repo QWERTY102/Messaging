@@ -13,7 +13,7 @@ btn.addEventListener("click", function() {
     message.value = "";
 })
 
-messages.onkeypressed = function(e) {
+message.onkeypressed = function(e) {
 if (e.keyCode == 13) {
         btn.click();
     }
