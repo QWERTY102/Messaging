@@ -13,6 +13,12 @@ btn.addEventListener("click", function() {
     message.value = "";
 })
 
+messages.onkeypressed = function(e) {
+if (e.keyCode == 13) {
+        btn.click();
+    }
+}
+
 socket.on("chat",function(data) {
     messages.innerHTML+="<p><strong>"+data.name+": </strong>"+data.message+"</p>"
 })
