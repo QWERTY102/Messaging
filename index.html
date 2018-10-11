@@ -1,19 +1,11 @@
 <html>
 <head>
-    <title>Messging</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Multiplyer Game</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="chat">
-        <h2>Moorad's Simple Chat</h2>
-        <div id="chat-window">
-        <div id="output"></div>
-        </div>
-        <input type="text" id="handle" placeholder="Name">
-        <input type="text" id="message" placeholder="Message">
-        <button id="send">Send</button>
-        <script src="chat.js"></script>
-    </div>
+    <canvas id="canvas" width="720px" height="405"></canvas>
+    <script src="game.js"></script>
 </body>
 </html>
