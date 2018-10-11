@@ -1,4 +1,4 @@
-socket = io.connect("localhost:4000");
+socket = io.connect("https://messaging-lblzvbchns.now.sh/");
 
 var message = document.getElementById("message")
 var btn = document.getElementById("send")
