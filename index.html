@@ -1,0 +1,110 @@
+<html>
+
+<head>
+    <title>Messaging V2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css'>
+    <link rel="stylesheet" href="style.css">
+    <link rel='icon' href='favicon.ico'>
+</head>
+
+<body>
+    <div class='name-container'>
+    <div class="notification is-link name">
+        What your name?
+        <div class="field has-addons" >
+                <div class="control" style='margin-top:2em;'>
+                    <input class="input name-input" type="text" placeholder="Name...">
+                </div>
+                <div class="control ok" style='margin-top:2em;'>
+                    <a class="button is-dark">
+                        Ok<span class="fas fa-arrow-right" style='margin:0 10px;'></span>
+                    </a>
+                </div>
+            </div>  
+    </div>
+    </div>
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item">
+                <img src="logo.png" width="180" height="28.5">
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    Change Name
+                </a>
+
+                <a class="navbar-item">
+                    Admin
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-link is-medium bd-rainbow">
+                                <img src='qwerty.png' width='20px' style='margin-right:5px;'> Website
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class='online'></div>
+    <div class='main-container'>
+        <div class='chat-window'>
+            <span class='chat-img'>
+                <h3 class='imgname'><strong>Bot</strong></h3>
+                <img src='http://localhost:4000/gif?id=JIX9t2j0ZTN9S'>
+            </span>
+            <span class='chat-message'>
+                <h3><strong>Bot</strong></h3>
+                    Gifs are a thing Now !!
+                </span>
+        </div>
+        <div class="send-form">
+            <div class="field has-addons">
+                <div class="control" style='width:100%;'>
+                    <input class="input tinput" type="text" placeholder='Send a Message "Hi !!!"'>
+                </div>
+                <div class="control imgBtn">
+                    <a class="button is-link">
+                        <span class='fas fa-image' style='margin:0 10px;'></span>
+                    </a>
+                </div>
+                <div class="control send">
+                    <a class="button is-link">
+                        Send<span class="fas fa-paper-plane" style='margin:0 10px;'></span>
+                    </a>
+                </div>
+            </div>
+            <div class='gifs' style='display: none;'>
+                <div class="field has-addons">
+                    <div class="control" style='width:50%;margin-top:5px;margin-left:5px;'>
+                        <input class="input ginput" type="text" placeholder="Search for a GIF">
+                    </div>
+                    <div class="control gsend" style='margin-top:5px;'>
+                        <a class="button is-link">
+                            Search<span class="fas fa-search" style='margin:0 10px;'></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="chat.js"></script>
+</body>
+
+</html>
