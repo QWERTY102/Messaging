@@ -1,4 +1,4 @@
-var socket = io.connect('localhost:4000');
+var socket = io.connect('https://messaging-tghbmeoaja.now.sh');
 var name;
 var imgBtn = document.querySelector('.imgBtn');
 var gifDiv = document.querySelector('.gifs');
