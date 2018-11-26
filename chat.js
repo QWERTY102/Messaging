@@ -1,5 +1,6 @@
-var socket = io.connect('https://messaging-tghbmeoaja.now.sh');
+var socket = io.connect('https://messaging-xspnkaxksz.now.sh');
 var name;
+var nameWindow = document.querySelector('.online');
 var imgBtn = document.querySelector('.imgBtn');
 var gifDiv = document.querySelector('.gifs');
 var sendBtn = document.querySelector('.send');
@@ -10,10 +11,21 @@ var chatWindow = document.querySelector('.chat-window');
 var nameInput = document.querySelector('.name-input');
 var okButton = document.querySelector('.ok');
 var nameContainer = document.querySelector('.name-container');
-var server = 'https://messaging-tghbmeoaja.now.sh';
+var server = 'https://messaging-xspnkaxksz.now.sh';
+var sent = Date.now();
+
+nameInput.addEventListener('keyup', (e) => {
+	if (e.keyCode == 13) {
+		name = nameInput.value;
+		socket.emit('name', {name:name});
+		nameContainer.style.display = 'none';
+	}
+});
+
 
 okButton.addEventListener('click', () => {
 	name = nameInput.value;
+	socket.emit('name', {name:name});
 	nameContainer.style.display = 'none';
 });
 
@@ -23,7 +35,7 @@ imgBtn.addEventListener('click', () => {
 	chatWindow.scrollTo(0,chatWindow.scrollHeight);
 });
 
-input.addEventListener('keypress', (e) => {
+input.addEventListener('keyup', (e) => {
 	if (e.keyCode == 13) {
 		socket.emit('messages', {
 			name:name,
@@ -32,6 +44,13 @@ input.addEventListener('keypress', (e) => {
 		input.value = '';
 	}
 });
+
+ginput.addEventListener('keyup', (e) => {
+	if (e.keyCode == 13) {
+		gBtn.click();
+	}
+	
+})
 
 gBtn.addEventListener('click', () => {
 
@@ -78,7 +97,7 @@ function processMessage(data) {
 	message.innerHTML += data.message;
 	message.className = data.socket == socket.id ? 'chat-message self' : 'chat-message';
 	chatWindow.appendChild(message);
-	chatWindow.scrollTo(0,chatWindow.scrollHeight);
+	scrollDown();
 	console.log(socket.id);
 }
 
@@ -96,16 +115,39 @@ function processImgs(data) {
 	img.src = URL;
 	container.appendChild(img);
 	chatWindow.appendChild(container);
-	chatWindow.scrollTo(0,chatWindow.scrollHeight);
+	scrollDown();
 }
 
 function send(element) {
 	var URL = element.src;
 	console.log(URL);
-	socket.emit('img', {
-		name:name,
-		img: URL
+	if (Date.now() - sent > 1800) {
+		sent = Date.now();
+		console.log(sent);
+		socket.emit('img', {
+			name:name,
+			img: URL
+		});
+		scrollDown();
+	}
+}
+
+function showNames(namesArray) {
+	var len = nameWindow.querySelectorAll('h1').length;
+	var elements = nameWindow.getElementsByTagName('h1');
+	console.log(elements);
+	for (var i = 0;i < len;i ++) {
+		elements[0].parentNode.removeChild(elements[0]);
+	}
+	namesArray.forEach((name) => {
+		var element = document.createElement('h1');
+		element.innerHTML = name.name;
+		nameWindow.appendChild(element);
 	});
+}
+
+function scrollDown() {
+	chatWindow.scrollTo(0,chatWindow.scrollHeight);
 }
 
 socket.on('messages', (data) => {
@@ -116,3 +158,9 @@ socket.on('messages', (data) => {
 socket.on('img', (data) => {
 	processImgs(data);
 });
+
+
+socket.on('name', (data) => {
+	showNames(data);
+});
+
